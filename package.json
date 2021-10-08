@@ -1,0 +1,12 @@
+{
+  "name": "Api-gestordeventas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/NoobDev-INC/Api-gestorVentas",
+  "author": "<you@example.com>",
+  "license": "MIT",
+  "type":"module",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
