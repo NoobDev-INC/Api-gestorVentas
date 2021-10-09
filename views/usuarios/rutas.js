@@ -17,6 +17,7 @@ const genericCallback = (res) => (err, result) => {
 };
 
 rutasUsuario.route('/usuarios').get((req, res) => {
+  console.log("Obteniendo usuarios")
   getAllUsers(genericCallback(res));
 });
 
