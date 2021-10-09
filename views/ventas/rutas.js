@@ -4,9 +4,9 @@ import {
   deleteSale,
   editSale,
   getAllSales,
-} from '../../controllers/sale/saleControllers.js';
+} from '../../controllers/ventas/saleController.js';
 
-const rutasUsuario = Express.Router();
+const rutasVentas = Express.Router();
 
 const genericCallback = (res) => (err, result) => {
   if (err) {
@@ -16,20 +16,20 @@ const genericCallback = (res) => (err, result) => {
   }
 };
 
-rutasUsuario.route('/ventas').get((req, res) => {
+rutasVentas.route('/ventas').get((req, res) => {
   getAllSales(genericCallback(res));
 });
 
-rutasUsuario.route('/ventas').post((req, res) => {
+rutasVentas.route('/ventas').post((req, res) => {
   createSale(req.body, genericCallback(res));
 });
 
-rutasUsuario.route('/ventas/:id').patch((req, res) => {
+rutasVentas.route('/ventas/:id').patch((req, res) => {
   editSale(req.params.id, req.body, genericCallback(res));
 });
 
-rutasUsuario.route('/ventas/:id').delete((req, res) => {
+rutasVentas.route('/ventas/:id').delete((req, res) => {
   deleteSale(req.params.id, genericCallback(res));
 });
 
-export default rutasUsuario;
+export default rutasVentas;

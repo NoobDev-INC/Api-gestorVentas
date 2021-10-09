@@ -4,7 +4,7 @@ import {
   deleteUser,
   editUser,
   getAllUsers,
-} from '../../controllers/user/userControllers.js';
+} from '../../controllers/usuarios/userController.js';
 
 const rutasUsuario = Express.Router();
 
