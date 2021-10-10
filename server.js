@@ -1,6 +1,7 @@
 //const express= require('express');
 import Express from 'express';
 import { MongoClient } from 'mongodb';
+import Cors from 'cors';
 
 const stringConexion='mongodb+srv://Valen:gestorventas@proyectogestordeventas.14chn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const client= new MongoClient(stringConexion,{
@@ -8,8 +9,9 @@ const client= new MongoClient(stringConexion,{
     useUnifiedTopology:true,
 })
 let conexion;
-const app=Express()
-app.use(Express.json())
+const app=Express();
+app.use(Express.json());
+app.use(Cors());
 
 app.get('/menu/productos',(req,res)=>{
     console.log('alguien hizo get en /productos');
