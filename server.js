@@ -11,7 +11,7 @@ let conexion;
 const app=Express()
 app.use(Express.json())
 
-app.get('/productos',(req,res)=>{
+app.get('/menu/productos',(req,res)=>{
     console.log('alguien hizo get en /productos');
     conexion
     .collection('producto')
@@ -28,7 +28,7 @@ app.get('/productos',(req,res)=>{
     });
 });
 
-app.post('/productos/nuevo',(req,res)=>{
+app.post('/menu/productos/nuevo',(req,res)=>{
     //implementar código para crear productos en la BD
     console.log(req);
     const datosproducto=req.body;
