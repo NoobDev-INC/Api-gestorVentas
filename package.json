@@ -5,8 +5,10 @@
   "repository": "https://github.com/NoobDev-INC/Api-gestorVentas",
   "author": "<you@example.com>",
   "license": "MIT",
-  "type":"module",
+  "type": "module",
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.3"
   }
 }
