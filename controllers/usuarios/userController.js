@@ -12,6 +12,7 @@ const createUser = async (datosUsuario, callback) => {
 };
 
 const editUser = async (vehicleId, data, callback) => {
+  console.log(vehicleId)
   const filtroUsuario = { _id: new ObjectId(vehicleId) };
   const operacion = {
     $set: data,
