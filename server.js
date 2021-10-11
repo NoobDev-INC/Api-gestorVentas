@@ -39,7 +39,7 @@ app.post('/menu/productos/nuevo',(req,res)=>{
         if (
             Object.keys(datosproducto).includes('name')&& 
             Object.keys(datosproducto).includes('brand')&&
-            Object.keys(datosproducto).includes('id')&&
+           
             Object.keys(datosproducto).includes('price')
         ){ 
             //implementar código para crear productos en la BD
@@ -66,7 +66,7 @@ app.post('/menu/productos/nuevo',(req,res)=>{
 app.patch('/menu/productos/editar',(req,res)=>{
     const edicion=req.body;
     console.log(edicion);
-    const filtroProducto={ _id: new objectId(edicion.id)};
+    const filtroProducto={ _id: new Object.id(edicion.id)};
     delete edicion.id;
     const operacion={
         $set:edicion,
@@ -88,7 +88,7 @@ app.patch('/menu/productos/editar',(req,res)=>{
 });
 
 app.delete('/menu/productos/eliminar',(req,res)=>{
-    const filtroProducto={ _id: new objectId(req.body.id)};
+    const filtroProducto={ _id: new Object.id(req.body.id)};
     conexion.collection('producto').deleteOneAndUpdate(filtroProducto,(err,result)=>{
         if (err){
             console.error(err);
