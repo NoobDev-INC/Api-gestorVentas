@@ -11,9 +11,9 @@ const createUser = async (datosUsuario, callback) => {
   await baseDeDatos.collection('usuario').insertOne(datosUsuario, callback);
 };
 
-const editUser = async (vehicleId, data, callback) => {
-  console.log(vehicleId)
-  const filtroUsuario = { _id: new ObjectId(vehicleId) };
+const editUser = async (userId, data, callback) => {
+  console.log(userId)
+  const filtroUsuario = { _id: new ObjectId(userId) };
   const operacion = {
     $set: data,
   };
@@ -23,8 +23,8 @@ const editUser = async (vehicleId, data, callback) => {
     .findOneAndUpdate(filtroUsuario, operacion, { upsert: true, returnOriginal: true }, callback);
 };
 
-const deleteUser = async (vehicleId, callback) => {
-  const filtroUsuario = { _id: new ObjectId(vehicleId) };
+const deleteUser = async (userId, callback) => {
+  const filtroUsuario = { _id: new ObjectId(userId) };
   const baseDeDatos = getDB();
   await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
 };
