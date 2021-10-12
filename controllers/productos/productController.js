@@ -3,7 +3,7 @@ import {ObjectId} from 'mongodb';
 
 const queryAllProductos=async (callback)=>{
     const baseDeDatos=getDB();
-    await baseDeDatos.collection('producto').find({}).limit(50).toArray(callback);
+    await baseDeDatos.collection('productos').find({}).limit(50).toArray(callback);
 };
 
 const crearProducto=async(datosproducto, callback)=>{
@@ -15,7 +15,7 @@ const crearProducto=async(datosproducto, callback)=>{
     ){ 
         //implementar código para crear productos en la BD
         const baseDeDatos=getDB();
-        await baseDeDatos.collection('producto').insertOne(datosproducto,callback);
+        await baseDeDatos.collection('productos').insertOne(datosproducto,callback);
     }else{
         return 'error';
     }    
@@ -23,7 +23,7 @@ const crearProducto=async(datosproducto, callback)=>{
 
 const consultarProducto=async(id,callback)=>{
     const baseDeDatos=getDB();
-    await baseDeDatos.collection('producto').findOne({_id:new ObjectId(id)},callback);
+    await baseDeDatos.collection('productos').findOne({_id:new ObjectId(id)},callback);
 
 }
 const editarProducto=async(id,edicion,callback)=>{
@@ -33,15 +33,15 @@ const editarProducto=async(id,edicion,callback)=>{
     };
     const baseDeDatos=getDB();
     await baseDeDatos
-        .collection('producto')
-        .findOneAndUpdate(filtroProducto,edicion,{usert:true,returnOriginal:true},callback);
+        .collection('productos')
+        .findOneAndUpdate(filtroProducto,operacion,{upsert:true,returnOriginal:true},callback);
 
 };
 
 const eliminarProducto=async(id,callback)=>{
     const filtroProducto={ _id: new ObjectId(id)};
     const baseDeDatos=getDB();
-    await baseDeDatos.collection('producto').deleteOneAndUpdate(filtroProducto,callback);
+    await baseDeDatos.collection('productos').deleteOne(filtroProducto,callback);
     
 };
 export{queryAllProductos,crearProducto,consultarProducto,editarProducto,eliminarProducto};

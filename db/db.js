@@ -11,19 +11,19 @@ const client= new MongoClient(stringConexion,{
 });
 let baseDeDatos;
 
-const conectarBD=(callback)=>{
+const connectServer=(callback)=>{
     client.connect((err,db)=>{
         if (err){
             console.error('Error conectando a la base de datos');
-            return false;
+            return 'error';
         }
-        baseDeDatos=db.db('productos');
+        baseDeDatos=db.db('GestorVentas');
         console.log('conexion exitosa');
-        return callback;
+        return callback();
     });
-}
+};
 
 const getDB=()=>{
     return baseDeDatos;
 };
-export{conectarBD,getDB};
+export{connectServer,getDB};
