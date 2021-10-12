@@ -1,7 +1,6 @@
 import Express from 'express';
 import { queryAllProductos,crearProducto,consultarProducto,editarProducto, eliminarProducto } from '../../controllers/productos/controller.js';
 
-
 const rutasProducto=Express.Router();
 const generCallback=(res)=>(err,result)=>{
     if(err){
@@ -18,7 +17,7 @@ rutasProducto.route('/menu/productos').get((req,res)=>{
     
 });
 
-rutasProducto.route('/menu/productos/:id').post((req,res)=>{
+rutasProducto.route('/menu/productos').post((req,res)=>{
     //implementar código para crear productos en la BD
     crearProducto(req.body,generCallback(res));
 });

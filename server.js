@@ -15,7 +15,7 @@ app.use(rutasProducto);
 
 const main= ()=>{
     return app.listen(process.env.PORT,()=>{
-        console.log('escuchando puerto  5000');
+        console.log(`escuchando puerto ${process.env.PORT}`);
     });
     
 };

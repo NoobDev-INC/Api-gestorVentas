@@ -1,13 +1,12 @@
 import {getDB} from '../../db/db.js';
 import {ObjectId} from 'mongodb';
-import {ObjectID} from 'bson';
 
 const queryAllProductos=async (callback)=>{
     const baseDeDatos=getDB();
     await baseDeDatos.collection('producto').find({}).limit(50).toArray(callback);
 };
 
-const crearProducto=async(datosProducto, callback)=>{
+const crearProducto=async(datosproducto, callback)=>{
     
     if (
         Object.keys(datosproducto).includes('name')&& 
@@ -24,7 +23,7 @@ const crearProducto=async(datosProducto, callback)=>{
 
 const consultarProducto=async(id,callback)=>{
     const baseDeDatos=getDB();
-    await baseDeDatos.collection('producto').findOne({_id:new ObjectID(id)},callback);
+    await baseDeDatos.collection('producto').findOne({_id:new ObjectId(id)},callback);
 
 }
 const editarProducto=async(id,edicion,callback)=>{
