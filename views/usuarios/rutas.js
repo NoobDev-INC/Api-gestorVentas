@@ -25,6 +25,12 @@ rutasUsuario.route('/usuarios').post((req, res) => {
   createUser(req.body, genericCallback(res));
 });
 
+rutasUsuario.route('/usuarios/self').get((req, res) => {
+  console.log("alguien hizo get en la ruta self")
+  consultarOCrearUsuario(req,genericCallback(res))
+  //getAllUsers(genericCallback(res));
+});
+
 rutasUsuario.route('/usuarios/:id').patch((req, res) => {
   editUser(req.params.id, req.body, genericCallback(res));
 });

@@ -1,5 +1,7 @@
 import { getDB } from '../../db/db.js';
 import { ObjectId } from 'mongodb';
+import jwt_decode from 'jwt-decode';
+import { response } from 'express';
 
 const getAllUsers = async (callback) => {
   const baseDeDatos = getDB();
@@ -29,4 +31,25 @@ const deleteUser = async (userId, callback) => {
   await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
 };
 
-export { getAllUsers, createUser, editUser, deleteUser };
+const consultarOCrearUsuario = async (req, callback) => {
+  const token =  req.headers.authorization.split('Bearer')[i];
+  const user = jwt_decode(token)['htpp://localhost/userData'];
+  console.log(user);
+  const baseDeDatos = getDB();
+  await baseDeDatos.collection("usuario").findOne({ email: user.email },async (err, response) => {
+    console.log('response consulta bd', response);
+    if(response){
+      callback(err, response);
+
+    }else{
+      user.auth0ID = user._id;
+      delete user._id;
+      user.rol = "inactivo"
+      await createUser(user, (err, respuesta) => callback(err,user));
+      };
+    }
+  });
+
+}
+
+export { getAllUsers, createUser, editUser, deleteUser, consultarOCrearUsuario };
