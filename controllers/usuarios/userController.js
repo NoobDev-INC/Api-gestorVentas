@@ -31,7 +31,7 @@ const deleteUser = async (userId, callback) => {
   await baseDeDatos.collection('usuario').deleteOne(filtroUsuario, callback);
 };
 
-const consultarOCrearUsuario = async (req, callback) => {
+/* const consultarOCrearUsuario = async (req, callback) => {
   const token =  req.headers.authorization.split('Bearer')[i];
   const user = jwt_decode(token)['htpp://localhost/userData'];
   console.log(user);
@@ -49,7 +49,6 @@ const consultarOCrearUsuario = async (req, callback) => {
       };
     }
   });
+} */
 
-}
-
-export { getAllUsers, createUser, editUser, deleteUser, consultarOCrearUsuario };
+export { getAllUsers, createUser, editUser, deleteUser}; //consultarOCrearUsuario };
