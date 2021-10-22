@@ -28,8 +28,7 @@ var jwtCheck = jwt({
         jwksRequestsPerMinute: 5,
         jwksUri: 'https://proyecto-ventas.us.auth0.com/.well-known/jwks.json'
   }),
-  //audience: 'api-autenticacion-gestor-ventas',
-  audience: 'https://proyecto-ventas.us.auth0.com/api/v2/',
+  audience: 'api-autenticacion-gestor-ventas',
   issuer: 'https://proyecto-ventas.us.auth0.com/',
   algorithms: ['RS256']
 });
