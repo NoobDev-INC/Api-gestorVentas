@@ -28,7 +28,8 @@ var jwtCheck = jwt({
         jwksRequestsPerMinute: 5,
         jwksUri: 'https://proyecto-ventas.us.auth0.com/.well-known/jwks.json'
   }),
-  audience: 'api-autenticacion-gestor-ventas',
+  //audience: 'api-autenticacion-gestor-ventas',
+  audience: 'https://proyecto-ventas.us.auth0.com/api/v2/',
   issuer: 'https://proyecto-ventas.us.auth0.com/',
   algorithms: ['RS256']
 });
@@ -39,9 +40,9 @@ app.use(rutasVentas);
 app.use(rutasUsuario);
 app.use(rutasProducto);
 
-const main = ()=>{
-    return app.listen(port,()=>{
-        console.log(`Escuchando puerto${port}`);
+const main = () => {
+    return app.listen(port, () => {
+        console.log(`Escuchando puerto ${port}`);
     });
 };
 
